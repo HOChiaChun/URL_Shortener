@@ -1,0 +1,29 @@
+{{#if urlShort}}
+<div style="display: flex; flex-direction: column; align-items: center;">
+  <div>
+    <h1>Success!Please use this link:</h1>
+  </div>
+  <div>
+    <a id="hyper-value" style="font-size: 35px; text-decoration:none;" href="{{urlShort.address}}">{{urlShort.shortURL}}</a>
+  </div>
+  <button id="copy" onclick="copyFunction()" style="margin-top: 30px;" type="button" class="btn btn-primary">Copy</button>
+  <script>
+    function copyFunction() {
+    const hyperValue = document.querySelector("#hyper-value")
+    navigator.clipboard.writeText(hyperValue.innerText)
+        .then(() => alert('已複製'))
+        .catch(error => console.log(error))
+    }
+  </script>
+</div>
+{{else}}
+<div>
+  <div>
+    <h1>Success!Please use this link:</h1>
+  </div>
+  <div>
+    <a id="hyper-value" style="font-size: 35px; text-decoration:none;" href={{ address }}>{{ shortURL }}</a>
+  </div>
+  <button style="margin-top: 30px;" type="submit" class="btn btn-primary">Copy</button>
+</div>
+{{/if}}
