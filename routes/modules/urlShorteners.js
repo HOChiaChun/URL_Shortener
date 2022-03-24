@@ -23,6 +23,14 @@ router.post("/", (req, res) => {
   }
 })
 
+router.get("/:shortURL", (req, res) => {
+  const shortName = req.params.shortURL
+  UrlShortener.findOne({shortURL: shortName})
+    .lean()
+    .then(short => res.redirect(short.address))
+    .catch(error => console.log(error))
+})
+
 
 
 module.exports = router
